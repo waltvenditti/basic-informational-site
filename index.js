@@ -1,23 +1,16 @@
-const express = require('express');
+const express = require("express");
 const app = express();
-
-
-const http = require('http');
-const fs = require('fs');
-const path = require('path');
+const http = require("http");
+const fs = require("fs");
+const path = require("path");
 const port = 5000;
+const members = require('./Members.js');
 
-app.get('/', (req, res) => {
-  res.render("/index.html");
-});
-app.get('/about', (req, res) => {
-  res.send('test about');
-});
-app.get('/contact-me', (req, res) => {
-  res.send('test contact-me');
-});
+app.get('/api/members', (req, res) => {
+  res.json(members);
+})
 
-
+app.use(express.static(path.join(__dirname, "pages")));
 
 app.listen(port, () => {
   console.log(`Server is listening on port ${port}...`);
@@ -53,4 +46,3 @@ app.listen(port, () => {
 // }).listen(port, () => {
 //   console.log(`server is running on port ${port}...`)
 // });
-
