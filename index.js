@@ -1,6 +1,7 @@
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
+const port = 5000;
 
 const server = http.createServer((req, res) => {
   let URL = req.url;
@@ -29,7 +30,7 @@ const server = http.createServer((req, res) => {
       res.end(content);
     });
   }
-}).listen(8080, () => {
-  console.log("server is running on port 5000...")
+}).listen(port, () => {
+  console.log(`server is running on port ${port}...`)
 });
 
